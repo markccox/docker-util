@@ -46,6 +46,13 @@ apt update
 
 case "${ROLE}" in
 
+  # Postgres
+  p|postgres)
+    hostname postgres${INSTANCE}
+    apt -y install postgresql postgresql-contrib
+    systemctl start postgresql.service
+  ;;
+
   # Apache service
   a|apache)
     hostname apache${INSTANCE}
