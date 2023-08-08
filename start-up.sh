@@ -49,8 +49,15 @@ case "${ROLE}" in
   # Postgres
   p|postgres)
     hostname postgres${INSTANCE}
+    cat << EOF | \
     apt -y install postgresql postgresql-contrib
-    systemctl start postgresql.service
+$(sleep 5)
+2
+$(sleep 5)
+106
+EOF
+
+    /etc/init.d/postgresql start
   ;;
 
   # Apache service
