@@ -51,9 +51,9 @@ case "${ROLE}" in
     hostname postgres${INSTANCE}
     cat << EOF | \
     apt -y install postgresql postgresql-contrib
-$(sleep 5)
+$(sleep 15)
 2
-$(sleep 5)
+$(sleep 15)
 106
 EOF
 
