@@ -50,7 +50,7 @@ case "${ROLE}" in
   p|postgres)
     hostname postgres${INSTANCE}
     cat << EOF | \
-    apt -y install postgresql postgresql-contrib
+    DEBIAN_FRONTEND=noninteractive apt-get -yq install postgresql postgresql-contrib
 $(sleep 30)
 2
 $(sleep 30)
