@@ -53,7 +53,7 @@ case "${ROLE}" in
     /etc/init.d/apache2 start
   ;;
 
-  # Tomcat ervice
+  # Tomcat service
   t|tomcat)
     hostname tomcat${INSTANCE}
     apt -y install default-jdk
