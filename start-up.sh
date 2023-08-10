@@ -8,12 +8,6 @@ while :; do
 
   case "${1}" in
 
-    # Take -s or --ssh-port parameter with argument for SSH service port.
-    -s|--ssh-port)
-      EXPOSED_SSH_PORT="${2}"
-      shift 2
-    ;;
-
     # Take -r or --role parameter with argument for services to be started.
     -r|--role)
       ROLE="${2}"
