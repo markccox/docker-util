@@ -68,11 +68,12 @@ EOF
     apt -y install curl
     groupadd tomcat
     useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
-    mkdir /opt/tomcat
-    cd /opt/tomcat
+    cd /opt
     curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz
     tar xzvf *gz
     rm *gz
+    ln -s apache-tomcat* tomcat
+    cd ../bin ; ./startup.sh
     #/etc/init.d/tomcat start
   ;;
 
