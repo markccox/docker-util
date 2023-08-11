@@ -80,7 +80,7 @@ EOF
   ;;
 
   # Faster debugging
-  fd )
+  fd)
     cd /opt/tomcat
     cp ~/docker-util/apache/server.xml config
     ./bin/startup.sh
