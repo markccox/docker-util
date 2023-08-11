@@ -73,7 +73,9 @@ EOF
     tar xzvf *gz
     rm *gz
     ln -s apache-tomcat* tomcat
-    cd ../bin ; ./startup.sh
+    cd tomcat
+    cp ~/docker-util/server.xml config
+    cd ./bin/startup.sh
     #/etc/init.d/tomcat start
   ;;
 
