@@ -74,7 +74,7 @@ EOF
     rm *gz
     ln -s apache-tomcat* tomcat
     cd /opt/tomcat
-    cp ~/docker-util/apache/server.xml config
+    cp ~/docker-util/apache/tomcat/server.xml config
     ./bin/startup.sh
     #/etc/init.d/tomcat start
   ;;
@@ -82,7 +82,7 @@ EOF
   # Faster debugging
   fd)
     cd /opt/tomcat
-    cp ~/docker-util/apache/server.xml config
+    cp ~/docker-util/apache/tomcat/server.xml config
     ./bin/startup.sh
     #/etc/init.d/tomcat start
   ;;
