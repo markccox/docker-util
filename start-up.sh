@@ -8,12 +8,6 @@ while :; do
 
   case "${1}" in
 
-    # Take -s or --ssh-port parameter with argument for SSH service port.
-    -s|--ssh-port)
-      EXPOSED_SSH_PORT="${2}"
-      shift 2
-    ;;
-
     # Take -r or --role parameter with argument for services to be started.
     -r|--role)
       ROLE="${2}"
@@ -46,6 +40,20 @@ apt update
 
 case "${ROLE}" in
 
+  # Postgres
+  p|postgres)
+    hostname postgres${INSTANCE}
+    cat << EOF | \
+    DEBIAN_FRONTEND=noninteractive apt-get -yq install postgresql postgresql-contrib
+$(sleep 30)
+2
+$(sleep 30)
+106
+EOF
+
+    /etc/init.d/postgresql start
+  ;;
+
   # Apache service
   a|apache)
     hostname apache${INSTANCE}
@@ -60,11 +68,22 @@ case "${ROLE}" in
     apt -y install curl
     groupadd tomcat
     useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
-    mkdir /opt/tomcat
-    cd /opt/tomcat
+    cd /opt
     curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz
     tar xzvf *gz
     rm *gz
+    ln -s apache-tomcat* tomcat
+    cd /opt/tomcat
+    cp ~/docker-util/apache/tomcat/server.xml config
+    ./bin/startup.sh
+    #/etc/init.d/tomcat start
+  ;;
+
+  # Faster debugging
+  fd)
+    cd /opt/tomcat
+    cp ~/docker-util/apache/tomcat/server.xml config
+    ./bin/startup.sh
     #/etc/init.d/tomcat start
   ;;
 
