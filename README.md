@@ -1,2 +1,2 @@
-# This repo is intended for docker containiner utilities.
+# This repo is intended for docker container utilities.
 
